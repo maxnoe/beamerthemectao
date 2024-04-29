@@ -1,6 +1,14 @@
 \ProvidesPackage{beamercolorthemectao}[2024/04/29 Unofficial CTAO beamer theme]
 
+\mode<presentation>
+
+\RequirePackage{pgfopts}
 \RequirePackage{xcolor}
+
+\pgfkeys{
+  /ctaotheme/color/.cd,
+  dark/.code=\ctao@color@dark,
+}
 
 \definecolor{ctao-galaxy-blue}{RGB}{0,0,74}
 \definecolor{ctao-cherenkov-blue}{RGB}{0,228,216}
@@ -8,15 +16,22 @@
 \definecolor{ctao-cosmic-azure}{RGB}{0,122,255}
 \definecolor{ctao-interstellar-indigo}{RGB}{0,0,156}
 
-\if@dark
+\newcommand{\ctao@color@dark}{
   \setbeamercolor{palette primary}{fg=ctao-moon-gray, bg=ctao-galaxy-blue}
-\else
+}
+\newcommand{\ctao@color@light}{
   \setbeamercolor{palette primary}{fg=ctao-galaxy-blue, bg=ctao-moon-gray}
-\fi
+}
+
+% light by default
+\ctao@color@light
 
 \setbeamercolor{palette secondary}{fg=ctao-cherenkov-blue}
 
 \setbeamercolor{normal text}{use=palette primary, fg=palette primary.fg, bg=palette primary.bg}
 
+% things using secondary pallete (Cherenkov Blue)
 \setbeamercolor{titlelike}{use=palette secondary, fg=palette secondary.fg}
 \setbeamercolor{section in toc}{use=palette secondary, fg=palette secondary.fg}
+\setbeamercolor{item}{use=palette secondary, fg=palette secondary.fg}
+\setbeamercolor{page number in head/foot}{use=palette secondary, fg=palette secondary.fg}

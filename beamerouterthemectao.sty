@@ -1,0 +1,34 @@
+\ProvidesPackage{beamerouterthemectao}[2024/04/29 Unofficial CTAO beamer theme]
+
+\RequirePackage{pgfopts}
+
+\pgfkeys{
+  /ctaotheme/outer/numbering/.cd,
+    .is choice,
+    none/.code=\setbeamertemplate{frame numbering}[none],
+    counter/.code=\setbeamertemplate{frame numbering}[counter],
+    fraction/.code=\setbeamertemplate{frame numbering}[fraction],
+}
+
+
+% frame numbering. None, number, number / total
+\defbeamertemplate{frame numbering}{none}{}
+\defbeamertemplate{frame numbering}{counter}{\insertframenumber}
+\defbeamertemplate{frame numbering}{fraction}{%
+  \insertframenumber/\inserttotalframenumber
+}
+% default is counter
+\setbeamertemplate{frame numbering}[counter]
+
+% structure
+\setbeamertemplate{headline}{}
+
+\setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[wd=\textwidth, sep=3ex]{footline}%
+    \usebeamerfont{page number in head/foot}%
+    \usebeamertemplate*{frame footer}
+    \hfill
+    \usebeamercolor{page number in head/foot}%
+    \usebeamertemplate*{frame numbering}
+  \end{beamercolorbox}%
+}

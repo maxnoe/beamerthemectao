@@ -6,19 +6,23 @@
 \PackageError{The beamerthemectao requires using xelatex or lualatex}%
 \fi\fi
 
+\RequirePackage{pgfopts}
 
-\mode<presentation>
-\newif\if@showtotalframes\@showtotalframesfalse
-\DeclareOption{showtotalframes}{\@showtotalframestrue}
+\newif\if@ctaotheme@dark\@ctaotheme@darkfalse
 
-\newif\if@dark\@darkfalse
-\DeclareOption{dark}{\@darktrue}
-
-\newif\if@interonly\@interonlyfalse
-\DeclareOption{interonly}{\@interonlytrue}
-
-\ProcessOptions
-
+\pgfkeys{
+  /ctaotheme/.cd,
+  .search also={
+    /ctaotheme/inner,
+    /ctaotheme/outer,
+    /ctaotheme/color,
+    /ctaotheme/font,
+  }
+}
 
 \usefonttheme{ctao}
 \usecolortheme{ctao}
+\useinnertheme{ctao}
+\useoutertheme{ctao}
+
+\ProcessPgfOptions{/ctaotheme}

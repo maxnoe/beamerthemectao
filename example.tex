@@ -14,10 +14,11 @@
 \usepackage{bookmark}
 
 
+
 \usetheme[
-  % showtotalframes, % show total number of frames in the footline
-  % dark, % optional dark theme, uncomment to use
-  % interonly, % disable using "Space Grotesk" as accent font in title etc.
+  dark, % optional dark theme, uncomment to use
+  % inter-only, % disable using "Space Grotesk" as accent font in title etc.
+  numbering=fraction,
 ]{ctao}
 
 % Put settings here, like
@@ -34,8 +35,33 @@
   \tableofcontents
 \end{frame}
 
+\begin{frame}[plain]{A Plain Frame}
+  \begin{itemize}
+    \item Hello
+    \item World
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[plain]{An Empty Frame}
+  \begin{itemize}
+    \item Hello
+    \item World
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[plain]{An Normal Frame}
+  \begin{itemize}
+    \item Hello
+    \item World
+  \end{itemize}
+\end{frame}
+
 \section{Fonts}
 \begin{frame}{Fonts}
+  \begin{itemize}
+    \item Standard font is \enquote{Inter}
+    \item {\accentfont Accent font is \enquote{Space Grotesk}} 
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{Math}

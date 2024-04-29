@@ -1,8 +1,15 @@
 \ProvidesPackage{beamerfontthemectao}[2024/04/29 Unofficial CTAO beamer theme]
 
+\RequirePackage{pgfopts}
 \RequirePackage{fontspec}
 \RequirePackage{unicode-math}
 \usefonttheme{professionalfonts}
+
+\newif\if@interonly\@interonlyfalse
+\pgfkeys{
+  /ctaotheme/font/.cd,
+  inter-only/.code=\@disable@accent,
+}
 
 \IfFontExistsTF{Inter}{
   \setsansfont{Inter}
@@ -19,16 +26,17 @@
 }
 \setmathfont{Fira Math}
 
-\if@interonly
+\IfFontExistsTF{Space Grotesk}{
+  \newfontfamily\accentfont{Space Grotesk}
+}{
+  \PackageWarning{Font "Space Grotesk" not found, headings will use inter.}
   \newfontfamily\accentfont{Inter}
-\else
-  \IfFontExistsTF{Space Grotesk}{
-    \newfontfamily\accentfont{Space Grotesk}
-  }{
-    \PackageWarning{Font "Space Grotesk" not found, headings will use inter.}
-    \newfontfamily\accentfont{Inter}
-  }
-\fi
+}
+
+% command to disable space grotesk
+\newcommand\@diable@accent{
+  \setfontfamily\accentfont{Inter}
+}
 
 \setbeamertemplate{navigation symbols}{}
 
