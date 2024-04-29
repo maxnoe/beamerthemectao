@@ -1,0 +1,38 @@
+\ProvidesPackage{beamerfontthemectao}[2024/04/29 Unofficial CTAO beamer theme]
+
+\RequirePackage{fontspec}
+\RequirePackage{unicode-math}
+\usefonttheme{professionalfonts}
+
+\IfFontExistsTF{Inter}{
+  \setsansfont{Inter}
+}{
+  \PackageError{Font "Inter" could not be found, install using "tlmgr install inter" or by downloading and installing manually in your system.}
+}
+
+\unimathsetup{
+  math-style=ISO,
+  bold-style=ISO,
+  nabla=upright,
+  partial=upright,
+  mathrm=sym,
+}
+\setmathfont{Fira Math}
+
+\if@interonly
+  \newfontfamily\accentfont{Inter}
+\else
+  \IfFontExistsTF{Space Grotesk}{
+    \newfontfamily\accentfont{Space Grotesk}
+  }{
+    \PackageWarning{Font "Space Grotesk" not found, headings will use inter.}
+    \newfontfamily\accentfont{Inter}
+  }
+\fi
+
+\setbeamertemplate{navigation symbols}{}
+
+% fonts
+\setbeamerfont{frametitle}{family=\accentfont, series=\bfseries}
+\setbeamerfont{title}{family=\accentfont, series=\bfseries}
+\setbeamerfont{section in toc}{family=\sffamily, series=\bfseries}

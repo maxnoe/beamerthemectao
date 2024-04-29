@@ -1,0 +1,22 @@
+\ProvidesPackage{beamercolorthemectao}[2024/04/29 Unofficial CTAO beamer theme]
+
+\RequirePackage{xcolor}
+
+\definecolor{ctao-galaxy-blue}{RGB}{0,0,74}
+\definecolor{ctao-cherenkov-blue}{RGB}{0,228,216}
+\definecolor{ctao-moon-gray}{RGB}{245,245,245}
+\definecolor{ctao-cosmic-azure}{RGB}{0,122,255}
+\definecolor{ctao-interstellar-indigo}{RGB}{0,0,156}
+
+\if@dark
+  \setbeamercolor{palette primary}{fg=ctao-moon-gray, bg=ctao-galaxy-blue}
+\else
+  \setbeamercolor{palette primary}{fg=ctao-galaxy-blue, bg=ctao-moon-gray}
+\fi
+
+\setbeamercolor{palette secondary}{fg=ctao-cherenkov-blue}
+
+\setbeamercolor{normal text}{use=palette primary, fg=palette primary.fg, bg=palette primary.bg}
+
+\setbeamercolor{titlelike}{use=palette secondary, fg=palette secondary.fg}
+\setbeamercolor{section in toc}{use=palette secondary, fg=palette secondary.fg}

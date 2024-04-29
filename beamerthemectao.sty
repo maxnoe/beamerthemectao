@@ -1,0 +1,24 @@
+\ProvidesPackage{beamerthemectao}[2024/04/29 Unofficial CTAO beamer theme]
+
+\RequirePackage{ifluatex}
+\RequirePackage{ifxetex}
+\ifluatex\else\ifxetex\else%
+\PackageError{The beamerthemectao requires using xelatex or lualatex}%
+\fi\fi
+
+
+\mode<presentation>
+\newif\if@showtotalframes\@showtotalframesfalse
+\DeclareOption{showtotalframes}{\@showtotalframestrue}
+
+\newif\if@dark\@darkfalse
+\DeclareOption{dark}{\@darktrue}
+
+\newif\if@interonly\@interonlyfalse
+\DeclareOption{interonly}{\@interonlytrue}
+
+\ProcessOptions
+
+
+\usefonttheme{ctao}
+\usecolortheme{ctao}

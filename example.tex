@@ -1,0 +1,49 @@
+% This example is meant to be compiled with lualatex or xelatex
+% The theme itself also supports pdflatex
+\PassOptionsToPackage{unicode}{hyperref}
+\documentclass[aspectratio=1610, 9pt]{beamer}
+
+\usepackage[american]{babel}
+\usepackage{csquotes}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\usepackage{hyperref}
+\usepackage{bookmark}
+
+
+\usetheme[
+  % showtotalframes, % show total number of frames in the footline
+  % dark, % optional dark theme, uncomment to use
+  % interonly, % disable using "Space Grotesk" as accent font in title etc.
+]{ctao}
+
+% Put settings here, like
+\title{Unofficial LaTeX Beamer Theme in the new CTAO style}
+\author[M.~Linhoff]{Maximilian Linhoff}
+\institute[TU Dortmund]{TU Dortmund}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Overview}
+  \tableofcontents
+\end{frame}
+
+\section{Fonts}
+\begin{frame}{Fonts}
+\end{frame}
+
+\begin{frame}{Math}
+  \begin{align*}
+    \nabla \cdot \symbf{B} &= 0 &
+    \nabla \cdot \symbf{E} &= \frac{ρ}{ε_0} \\
+    \nabla \times \symbf{E} &= -\partial_t \symbf{B} &
+    \nabla \times \symbf{B} &= μ_0 \symbf{j} + μ_0 ε_0 \partial_t \symbf{E} &
+  \end{align*}
+\end{frame}
+\end{document}
