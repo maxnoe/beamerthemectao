@@ -12,23 +12,26 @@
 
 
 % frame numbering. None, number, number / total
+\defbeamertemplate*{frame numbering}{counter}{\insertframenumber}
 \defbeamertemplate{frame numbering}{none}{}
-\defbeamertemplate{frame numbering}{counter}{\insertframenumber}
 \defbeamertemplate{frame numbering}{fraction}{%
   \insertframenumber/\inserttotalframenumber
 }
-% default is counter
-\setbeamertemplate{frame numbering}[counter]
+
+\defbeamertemplate*{frame footer}{default}{
+  \usebeamerfont{author in head/foot}%
+  \usebeamercolor[fg]{author in head/foot}%
+  \insertshortauthor{} | \insertshortdate{}%
+}
 
 % structure
 \setbeamertemplate{headline}{}
 
 \setbeamertemplate{footline}{%
   \begin{beamercolorbox}[wd=\textwidth, sep=3ex]{footline}%
-    \usebeamerfont{page number in head/foot}%
     \usebeamertemplate*{frame footer}
     \hfill
-    \usebeamercolor{page number in head/foot}%
+    \usebeamercolor[fg]{page number in head/foot}%
     \usebeamertemplate*{frame numbering}
   \end{beamercolorbox}%
 }
