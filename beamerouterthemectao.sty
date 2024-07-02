@@ -25,7 +25,34 @@
 }
 
 % structure
-\setbeamertemplate{headline}{}
+\newlength{\@headsep}
+\setlength{\@headsep}{5pt}
+\setbeamertemplate{headline}{
+  \vspace{\@headsep}%
+  \leavevmode%
+  \hspace{\@headsep}%
+  \begin{beamercolorbox}[
+    wd=\dimexpr 0.7\paperwidth - \@headsep \relax,
+    ht=0.7cm,
+    left,
+  ]{headline}%
+    \vbox to 0.7cm {%
+      \usebeamerfont{section in head/foot}%
+      \let\hyperlink\@secondoftwo% just print section, create no link
+      \insertsectionhead%
+      \vfil%
+    }%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[
+    wd=\dimexpr 0.3\paperwidth - \@headsep \relax,
+    ht=0.7cm,
+    right,
+  ]{headline}%
+    \hfill\includegraphics[height=0.7cm]{\@headline@logo}%
+  \end{beamercolorbox}%
+  \hspace{\@headsep}%
+  \vskip\@headsep%
+}
 
 \setbeamertemplate{footline}{%
   \begin{beamercolorbox}[wd=\textwidth, sep=3ex]{footline}%

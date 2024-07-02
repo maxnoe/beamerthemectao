@@ -1,21 +1,95 @@
 \ProvidesPackage{beamerinnerthemectao}[2024/04/29 Unofficial CTAO beamer theme]
 
+\RequirePackage[style=iso]{datetime2}
+
+\titlegraphic{ctao-design/agn-gradient.jpg}
+
+
+\setbeamertemplate{itemize item}[circle]
+\setbeamertemplate{itemize subitem}[circle]
+\setbeamertemplate{itemize subsubitem}[circle]
 
 \def\maketitle{%
   \ifbeamer@inframe
     \titlepage
-  \else
-    \frame[plain,noframenumbering]{\titlepage}
+  \else%
+    \bgroup%
+    \usebackgroundtemplate{%
+      \includegraphics[width=\paperwidth,height=\paperheight]{\inserttitlegraphic}%
+    }%
+    \frame[plain,noframenumbering]{\titlepage}%
+    \egroup%
   \fi
 }
 \def\titlepage{%
   \usebeamertemplate{title page}
 }
 
-\setbeamertemplate{title graphic}{
-  \vbox to 0pt {
-    \vspace*{2em}
-    \inserttitlegraphic%
-  }%
-  \nointerlineskip%
+\def\@authoremail{}
+\newcommand{\authoremail}[1]{\gdef\@authoremail{#1}}
+
+\setbeamertemplate{title page}{
+  \includegraphics[height=0.7cm]{logos/ctao_logo_general_reverse.png}\par%
+  \vspace{0.25\textheight}%
+  \usebeamertemplate{title}%
+  \usebeamertemplate{subtitle}%
+  \vfill%
+  \usebeamertemplate{date}%
+  \usebeamertemplate{author}%
+  \usebeamertemplate{institute}%
+  \usebeamertemplate{author-email}
+}
+
+\setbeamertemplate{title}{%
+  \begingroup%
+  \usebeamerfont{title}%
+  \usebeamercolor[fg]{title}%
+  \inserttitle%
+  \vskip0.25em
+  \endgroup%
+}%
+
+\setbeamertemplate{subtitle}{%
+  \begingroup%
+  \usebeamerfont{subtitle}%
+  \usebeamercolor[fg]{subtitle}%
+  \insertsubtitle%
+  \endgroup%
+}
+
+\setbeamertemplate{date}{
+  \begingroup%
+  \usebeamerfont{date}%
+  \usebeamercolor[fg]{date}%
+  \insertdate%
+  \endgroup%
+  \vskip0.25\baselineskip%
+}
+
+\setbeamertemplate{author}{%
+  \begingroup%
+  \usebeamerfont{author}%
+  \usebeamercolor[fg]{author}%
+  \insertauthor%
+  \endgroup%
+}
+
+\setbeamertemplate{institute}{%
+  \begingroup%
+  \ifx\insertauthor\@empty\else, \fi%
+  \usebeamerfont{institute}%
+  \usebeamercolor[fg]{institute}%
+  \insertinstitute%
+  \endgroup%
+}
+
+\setbeamertemplate{author-email}{%
+  \begingroup%
+  \usebeamerfont{author}%
+  \usebeamercolor[fg]{author}%
+  \newline%
+  \ifx\@authoremail\@empty\else%
+  \@authoremail%
+  \fi%
+  \endgroup%
 }

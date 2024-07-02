@@ -4,6 +4,8 @@
 
 \RequirePackage{pgfopts}
 \RequirePackage{xcolor}
+\RequirePackage{hyperref}
+
 
 \pgfkeys{
   /ctaotheme/color/.cd,
@@ -16,22 +18,34 @@
 \definecolor{ctao-cosmic-azure}{RGB}{0,122,255}
 \definecolor{ctao-interstellar-indigo}{RGB}{0,0,156}
 
+
 \newcommand{\ctao@color@dark}{
   \setbeamercolor{palette primary}{fg=ctao-moon-gray, bg=ctao-galaxy-blue}
+  \gdef\@headline@logo{logos/ctao_logo_general_reverse.png}
 }
 \newcommand{\ctao@color@light}{
   \setbeamercolor{palette primary}{fg=ctao-galaxy-blue, bg=ctao-moon-gray}
+  \gdef\@headline@logo{logos/ctao_logo_general_main.png}
 }
 
 % light by default
 \ctao@color@light
 
+\hypersetup{colorlinks=true, urlcolor=ctao-cherenkov-blue, linkcolor=ctao-cherenkov-blue}
+
 \setbeamercolor{palette secondary}{fg=ctao-cherenkov-blue}
 
 \setbeamercolor{normal text}{use=palette primary, fg=palette primary.fg, bg=palette primary.bg}
+\setbeamercolor{emph}{use=palette secondary, fg=palette secondary.fg}
 
-% things using secondary pallete (Cherenkov Blue)
-\setbeamercolor{titlelike}{use=palette secondary, fg=palette secondary.fg}
+% titlepage
+\setbeamercolor{titlelike}{fg=ctao-moon-gray}
+\setbeamercolor{subtitle}{fg=ctao-cherenkov-blue}
+\setbeamercolor{author}{fg=ctao-moon-gray}
+\setbeamercolor{date}{fg=ctao-moon-gray}
+\setbeamercolor{institute}{fg=ctao-moon-gray}
+
+
 \setbeamercolor{section in toc}{use=palette secondary, fg=palette secondary.fg}
 \setbeamercolor{item}{use=palette secondary, fg=palette secondary.fg}
 \setbeamercolor{page number in head/foot}{use=palette secondary, fg=palette secondary.fg}
