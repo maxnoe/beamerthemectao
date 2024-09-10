@@ -14,7 +14,7 @@
 \IfFontExistsTF{Inter}{
   \setsansfont{Inter}
 }{
-  \PackageError{Font "Inter" could not be found, install using "tlmgr install inter" or by downloading and installing manually in your system.}
+\PackageError{beamerfontthemectao}{Font "Inter" could not be found}{Install the font using "tlmgr install inter" or by downloading and installing manually in your system.}
 }
 
 \unimathsetup{
@@ -29,7 +29,7 @@
 \IfFontExistsTF{Space Grotesk}{
   \newfontfamily\accentfont{Space Grotesk}
 }{
-  \PackageWarning{Font "Space Grotesk" not found, headings will use inter.}
+\PackageWarning{beamerfontthemectao}{Font "Space Grotesk" not found, headings will use inter.}
   \newfontfamily\accentfont{Inter}
 }
 
